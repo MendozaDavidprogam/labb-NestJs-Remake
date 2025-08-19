@@ -1,3 +1,5 @@
+API RESTful para gestión de inventario en pequeñas empresas con NestJS, PostgreSQL y TypeORM. Incluye autenticación JWT, control de roles (admin/usuario), CRUD de productos y categorías, gestión de stock, validación con DTOs y documentación completa con Swagger.na arquitectura modular orientada a la escalabilidad y buenas prácticas.
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
