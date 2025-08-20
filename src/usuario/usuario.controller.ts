@@ -9,6 +9,7 @@ import {
   ParseIntPipe,
   UseGuards,
   NotFoundException,
+  UseFilters,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/auth/roles.guard';
@@ -17,9 +18,9 @@ import { Role } from 'src/auth/roles.enum';
 import { UsuarioService } from './usuario.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UsuarioExceptionFilter } from './usuario-exception.filter/usuario-exception.filter';
 
-
-//controlador
+@UseFilters(UsuarioExceptionFilter)
 @Controller('usuario')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}

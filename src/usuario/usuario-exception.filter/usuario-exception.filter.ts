@@ -16,13 +16,21 @@ export class UsuarioExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
 
+    let contexto = 'Error general en usuarios';
+
+    if (exception instanceof BadRequestException) {
+      contexto = 'Validación exitosa de datos';
+    } else if (exception instanceof NotFoundException) {
+      contexto = 'Recurso no encontrado';
+    }
+
     response.status(status).json({
-      estado: 'error',
-      codigo: status,
+      statusCode: status,
       mensaje: exception.message,
+      timestamp: new Date().toISOString(), 
       ruta: request.url,
-      momento: new Date().toISOString(),
       modulo: 'users',
+      contexto,
     });
   }
 }
