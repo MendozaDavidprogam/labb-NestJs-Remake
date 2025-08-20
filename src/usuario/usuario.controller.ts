@@ -57,7 +57,7 @@ export class UsuarioController {
     return await this.usuarioService.updateUser(id, dto);
   }
 
-  // 🗑️ Eliminar usuario (solo admin)
+  // Eliminar usuario (solo admin)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Delete(':id')
@@ -65,5 +65,5 @@ export class UsuarioController {
     return await this.usuarioService.deleteUser(id);
   }
 
-  
+
 }
