@@ -9,7 +9,7 @@ import {
 import { Request, Response } from 'express';
 
 @Catch(NotFoundException, BadRequestException)
-export class UsersExceptionFilter implements ExceptionFilter {
+export class UsuarioExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
