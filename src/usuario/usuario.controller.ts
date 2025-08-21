@@ -1,4 +1,3 @@
-"/src/usuario/usuario.controller.ts"
 import {
   Controller,
   Get,
@@ -69,5 +68,3 @@ export class UsuarioController {
     return await this.usuarioService.deleteUser(id);
   }
 
-
-}

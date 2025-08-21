@@ -1,4 +1,3 @@
-"/src/usuario/usuario-exception.filter/usuario-exception.filter.ts"
 import {
   ExceptionFilter,
   Catch,
@@ -34,4 +33,4 @@ export class UsuarioExceptionFilter implements ExceptionFilter {
       contexto,
     });
   }
-}
+
