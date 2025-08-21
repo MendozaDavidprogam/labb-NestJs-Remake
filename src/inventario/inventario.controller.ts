@@ -33,7 +33,7 @@ export class InventarioController {
   @Roles(Role.Admin)
   @Post()
   async create(@Body() dto: CreateInventarioDto) {
-    return await this.InventarioService.create(dto);
+    return await this.InventarioService.crearInventario(dto);
   }
 
 

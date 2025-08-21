@@ -1,9 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { Inventario } from 'src/inventario/entities/inventario.entity';
+
 
 @Entity('productos')
 export class Producto {
   @PrimaryGeneratedColumn()
-  idproducto: number;
+  id: number;
 
   @Column()
   nombre: string;
@@ -22,4 +24,9 @@ export class Producto {
 
   @Column({ default: 'activo' })
   estado: string;
+
+
+  // Relación inversa con inventario
+  @OneToOne(() => Inventario, (inventario) => inventario.producto)
+  inventario: Inventario;
 }
