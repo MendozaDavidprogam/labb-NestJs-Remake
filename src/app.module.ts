@@ -8,6 +8,8 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { InventarioModule } from './inventario/inventario.module';
 import { RolesModule } from './roles/roles.module';
 import { AuthModule } from './auth/auth.module';
+import { Usuario } from './usuario/entities/user.entity';
+import { Categoria } from './categoria/entities/categoria.entity';
 
 
 @Module({ imports: [
@@ -16,9 +18,9 @@ import { AuthModule } from './auth/auth.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123456789',
+      password: 'Yoelin26',
       database: 'proyectoAPI',
-      entities: [],
+      entities: [Usuario, Categoria],
       synchronize: true,
     }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, AuthModule, RolesModule],
   controllers: [AppController],

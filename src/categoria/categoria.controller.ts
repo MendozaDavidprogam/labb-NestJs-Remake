@@ -1,4 +1,51 @@
-import { Controller } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Patch,
+  UseGuards,
+} from '@nestjs/common';
+import { CategoriaService } from './categoria.service';
+import { CreateCategoriaDto } from './dto/create-categoria.dto';
+import { UpdateCategoriaDto } from './dto/update-categoria.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-strategy/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/roles.guard';
+import { Roles } from 'src/auth/roles.decorator';
+import { Role } from 'src/auth/roles.enum';
 
 @Controller('categoria')
-export class CategoriaController {}
+@UseGuards(JwtAuthGuard, RolesGuard)
+export class CategoriaController {
+  constructor(private readonly categoriaService: CategoriaService) {}
+
+  @Post()
+  @Roles(Role.Admin)
+  create(@Body() dto: CreateCategoriaDto) {
+    return this.categoriaService.create(dto);
+  }
+
+  @Get()
+  findAll() {
+    return this.categoriaService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.categoriaService.findOne(+id);
+  }
+
+  @Patch(':id')
+  @Roles(Role.Admin)
+  update(@Param('id') id: string, @Body() dto: UpdateCategoriaDto) {
+    return this.categoriaService.update(+id, dto);
+  }
+
+  @Delete(':id')
+  @Roles(Role.Admin)
+  remove(@Param('id') id: string) {
+    return this.categoriaService.remove(+id);
+  }
+}
