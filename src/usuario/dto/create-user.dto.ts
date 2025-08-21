@@ -7,4 +7,3 @@ export class CreateUserDto {
   contrasena: string;
   role?: string;
 }
-

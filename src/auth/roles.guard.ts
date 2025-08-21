@@ -22,4 +22,6 @@ canActivate(context: ExecutionContext): boolean{
 
     return requiredRoles.includes(user?.role); // Comparación directa con string
 }
+
 }
+

@@ -1,3 +1,4 @@
+"/src/app.model.ts"
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -8,7 +9,8 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { InventarioModule } from './inventario/inventario.module';
 import { RolesModule } from './roles/roles.module';
 import { AuthModule } from './auth/auth.module';
-
+import { Usuario } from './usuario/entities/user.entity';
+import { Producto } from './producto/entities/producto.entity';
 
 @Module({ imports: [
     TypeOrmModule.forRoot({
@@ -18,9 +20,9 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: '123456789',
       database: 'proyectoAPI',
-      entities: [],
+      entities: [Usuario, Producto],
       synchronize: true,
-    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, AuthModule, RolesModule],
+    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

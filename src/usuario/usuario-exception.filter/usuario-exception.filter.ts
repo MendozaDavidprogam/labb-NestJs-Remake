@@ -33,4 +33,4 @@ export class UsuarioExceptionFilter implements ExceptionFilter {
       contexto,
     });
   }
-}
+

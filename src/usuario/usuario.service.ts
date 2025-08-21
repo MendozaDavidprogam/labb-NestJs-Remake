@@ -80,7 +80,3 @@ export class UsuarioService {
     const { contrasena, ...rest } = usuario;
     return rest;
   }
-
-
-
-}
