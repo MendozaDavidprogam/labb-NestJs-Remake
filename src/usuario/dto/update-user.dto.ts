@@ -1,4 +1,3 @@
-"/src/usuario/dto/update-user.dto.ts"
 export class UpdateUserDto {
   nombre?: string;
   apellido?: string;

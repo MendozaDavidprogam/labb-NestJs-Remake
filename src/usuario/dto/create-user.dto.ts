@@ -1,4 +1,3 @@
-"/src/usuario/dto/create-user.dto.ts"
 export class CreateUserDto {
 
   nombre: string;

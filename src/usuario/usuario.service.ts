@@ -1,4 +1,3 @@
-"/src/usuario/usuario.service.ts"
 import {
   Injectable,
   NotFoundException,
@@ -81,7 +80,3 @@ export class UsuarioService {
     const { contrasena, ...rest } = usuario;
     return rest;
   }
-
-
-
-}
