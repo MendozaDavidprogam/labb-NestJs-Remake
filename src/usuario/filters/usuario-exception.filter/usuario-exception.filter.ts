@@ -29,8 +29,8 @@ export class UsuarioExceptionFilter implements ExceptionFilter {
       mensaje: exception.message,
       timestamp: new Date().toISOString(), 
       ruta: request.url,
-      modulo: 'users',
+      modulo: 'usuario',
       contexto,
     });
   }
-
+}

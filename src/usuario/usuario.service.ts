@@ -18,6 +18,7 @@ export class UsuarioService {
     private userRepo: Repository<Usuario>,
   ) {}
 
+
   async findAll() {
     const usuarios = await this.userRepo.find();
     return usuarios.map(({ contrasena, ...rest }) => rest);
@@ -36,7 +37,7 @@ export class UsuarioService {
     return usuario;
   }
 
-  async createUser(dto: CreateUserDto) {
+  async create(dto: CreateUserDto) {
     const exists = await this.userRepo.findOneBy({ email: dto.email });
     if (exists) throw new ConflictException('El correo ya está registrado');
 
@@ -52,7 +53,7 @@ export class UsuarioService {
     return rest;
   }
 
-  async updateUser(id: number, dto: UpdateUserDto) {
+  async update(id: number, dto: UpdateUserDto) {
     const usuario = await this.userRepo.findOneBy({ id });
     if (!usuario) throw new NotFoundException('Usuario no encontrado');
 
@@ -72,7 +73,7 @@ export class UsuarioService {
 }
 
 
-  async deleteUser(id: number) {
+  async remove(id: number) {
     const usuario = await this.userRepo.findOneBy({ id });
     if (!usuario) throw new NotFoundException('Usuario no encontrado');
 
@@ -80,3 +81,8 @@ export class UsuarioService {
     const { contrasena, ...rest } = usuario;
     return rest;
   }
+
+
+
+  
+}

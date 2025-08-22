@@ -18,7 +18,7 @@ import { Role } from 'src/auth/roles.enum';
 import { UsuarioService } from './usuario.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UsuarioExceptionFilter } from './usuario-exception.filter/usuario-exception.filter';
+import { UsuarioExceptionFilter } from './filters/usuario-exception.filter/usuario-exception.filter';
 
 @UseFilters(UsuarioExceptionFilter)
 @Controller('usuario')
@@ -28,7 +28,7 @@ export class UsuarioController {
   // Crear un usuario (registro abierto a todos)
   @Post()
   async create(@Body() dto: CreateUserDto) {
-    return await this.usuarioService.createUser(dto);
+    return await this.usuarioService.create(dto);
   }
 
   // Listar todos los usuarios (solo admin)
@@ -57,7 +57,7 @@ export class UsuarioController {
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateUserDto,
   ) {
-    return await this.usuarioService.updateUser(id, dto);
+    return await this.usuarioService.update(id, dto);
   }
 
   // Eliminar usuario (solo admin)
@@ -65,6 +65,14 @@ export class UsuarioController {
   @Roles(Role.Admin)
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number) {
-    return await this.usuarioService.deleteUser(id);
+    return await this.usuarioService.remove(id);
   }
 
+  //Buscar usuario por su email
+@Get('email/:email')
+  async findByEmail(@Param('email') email: string) {
+     return await this.usuarioService.findByEmail(email);
+   }
+
+ 
+}

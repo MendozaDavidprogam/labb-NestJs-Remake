@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { UsuarioExceptionFilter } from './usuario/usuario-exception.filter/usuario-exception.filter';
+import { UsuarioExceptionFilter } from './usuario/filters/usuario-exception.filter/usuario-exception.filter';
 
 
 async function bootstrap() {
