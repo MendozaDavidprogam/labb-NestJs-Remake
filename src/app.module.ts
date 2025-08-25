@@ -12,7 +12,6 @@ import { AuthModule } from './auth/auth.module';
 import { Usuario } from './usuario/entities/user.entity';
 import { Producto } from './producto/entities/producto.entity';
 import { Categoria } from './categoria/entities/categoria.entity';
-import { OperacionesModule } from './operaciones/operaciones.module';
 
 @Module({ imports: [
     TypeOrmModule.forRoot({
@@ -24,7 +23,7 @@ import { OperacionesModule } from './operaciones/operaciones.module';
       database: 'proyectoAPI',
       entities: [Usuario, Producto, Categoria],
       synchronize: true,
-    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule, OperacionesModule],
+    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

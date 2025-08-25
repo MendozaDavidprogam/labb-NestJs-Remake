@@ -1,13 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Categoria } from 'src/categoria/entities/categoria.entity';
-import { Inventario } from 'src/inventario/entities/inventario.entity';
 
 
 
 @Entity('productos')
 export class Producto {
   @PrimaryGeneratedColumn()
-  id: number;
+  idproducto: number;
 
   @Column()
   nombre: string;

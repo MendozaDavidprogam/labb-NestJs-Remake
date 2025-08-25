@@ -10,7 +10,7 @@ import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 export class CategoriaService {
   constructor(
     @InjectRepository(Categoria)
-    private readonly categoriaRepo: Repository<Categoria>, // 👈 nombre corregido
+    private readonly categoriaRepo: Repository<Categoria>, //  nombre corregido
   ) {}
 
   async create(dto: CreateCategoriaDto) {

@@ -1,3 +1,4 @@
+// src/producto/producto.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -28,7 +29,6 @@ export class ProductoService {
     const producto = await this.productoRepo.findOne({
       where: { idproducto: id },
     });
-
     if (!producto) throw new NotFoundException('Producto no encontrado');
     return producto;
   }
@@ -63,5 +63,3 @@ export class ProductoService {
     return await this.productoRepo.remove(producto);
   }
 }
-
-
