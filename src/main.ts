@@ -1,13 +1,29 @@
+// src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { UsuarioExceptionFilter } from './usuario/usuario-exception.filter/usuario-exception.filter';
-
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe);
+
+  // Pipes globales
+  app.useGlobalPipes(new ValidationPipe());
+
+  // Filtros globales
   app.useGlobalFilters(new UsuarioExceptionFilter());
+
+  // Swagger Configuracion basica
+  const config = new DocumentBuilder()
+    .setTitle('Inventario API')
+    .setDescription('API para gestionar productos, usuarios y categorías')
+    .setVersion('1.0')
+    .addBearerAuth() // Habilita JWT en Swagger UI
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document); // http://localhost:3000/api
 
   await app.listen(process.env.PORT ?? 3000);
 }
