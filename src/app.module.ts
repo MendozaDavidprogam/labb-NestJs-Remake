@@ -19,7 +19,7 @@ import { Categoria } from './categoria/entities/categoria.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123456789',
+      password: 'Yoelin26',
       database: 'proyectoAPI',
       entities: [Usuario, Producto, Categoria],
       synchronize: true,
