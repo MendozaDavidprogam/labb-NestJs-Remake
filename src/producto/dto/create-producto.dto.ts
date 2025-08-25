@@ -1,3 +1,4 @@
+// src/producto/dto/create-producto.dto.ts
 import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
 
 export class CreateProductoDto {
@@ -10,12 +11,9 @@ export class CreateProductoDto {
   @IsBoolean()
   disponibilidad: boolean;
 
-  @IsOptional()
-  idcategoria?: number;
-
-  @IsOptional()
-  idinventario?: number;
-
   @IsString()
   estado: string;
+
+  @IsNumber()
+  idcategoria: number; 
 }

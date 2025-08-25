@@ -1,3 +1,4 @@
+// src/auth/roles.guard.ts
 import{ Injectable, CanActivate, ExecutionContext} from'@nestjs/common';
 import{ Reflector } from'@nestjs/core';
 import{ Role } from'./roles.enum'; // Enumcon los roles definidos
@@ -22,4 +23,6 @@ canActivate(context: ExecutionContext): boolean{
 
     return requiredRoles.includes(user?.role); // Comparación directa con string
 }
+
 }
+

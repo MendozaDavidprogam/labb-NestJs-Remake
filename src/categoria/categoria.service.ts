@@ -1,3 +1,4 @@
+"/src/categoria/categoria.service.ts"
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -9,7 +10,7 @@ import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 export class CategoriaService {
   constructor(
     @InjectRepository(Categoria)
-    private readonly categoriaRepo: Repository<Categoria>, // 👈 nombre corregido
+    private readonly categoriaRepo: Repository<Categoria>, //  nombre corregido
   ) {}
 
   async create(dto: CreateCategoriaDto) {

@@ -1,3 +1,4 @@
+// src/auth/auth.service.ts
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsuarioService } from 'src/usuario/usuario.service';
@@ -34,4 +35,10 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> DavidMendoza
