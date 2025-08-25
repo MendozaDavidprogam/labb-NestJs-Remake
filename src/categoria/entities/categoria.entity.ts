@@ -18,5 +18,5 @@ export class Categoria {
 
   // Relacion OneToMany con Producto
   @OneToMany(() => Producto, producto => producto.categoria)
-  productos: Producto[];
+  producto : Producto[];
 }

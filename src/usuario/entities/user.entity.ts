@@ -23,8 +23,9 @@ export class Usuario {
   @Column({ default: 'user' })
   role: string;
 
-  @Column()
+  @Column({ default: 'activo' })
   estado: string;
+
 
 }
 
