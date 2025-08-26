@@ -18,4 +18,8 @@ export class CreateProductoDto {
   @IsNumber()
   @IsNotEmpty({ message: 'El id de la categoría no puede estar vacío' })
   idcategoria: number; 
+  
+  @IsNumber()
+  @IsNotEmpty({ message: 'El id del no puede estar vacío' })
+  idinventario: number; 
 }

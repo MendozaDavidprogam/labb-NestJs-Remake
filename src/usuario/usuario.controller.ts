@@ -19,8 +19,11 @@ import { UsuarioService } from './usuario.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { GlobalExceptionFilter } from 'src/filters/filter-exception';
+import { JwtAuthGuard } from 'src/auth/jwt-strategy/jwt-auth.guard';
 
 @UseFilters(GlobalExceptionFilter)
+@UseGuards(JwtAuthGuard, RolesGuard)
+
 @Controller('usuario')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
@@ -33,7 +36,6 @@ export class UsuarioController {
 
   
   // Listar todos los usuarios (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Get()
   async findAll() {
@@ -41,7 +43,6 @@ export class UsuarioController {
   }
 
   // Buscar usuario por ID (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Get(':id')
   async findById(@Param('id', ParseIntPipe) id: number) {
@@ -51,7 +52,6 @@ export class UsuarioController {
   }
 
   // Actualizar usuario (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Put(':id')
   async update(
@@ -62,7 +62,6 @@ export class UsuarioController {
   }
 
   // Eliminar usuario (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number) {
@@ -70,10 +69,10 @@ export class UsuarioController {
   }
 
   //Buscar usuario por su email
-@Get('email/:email')
-  async findByEmail(@Param('email') email: string) {
-     return await this.usuarioService.findByEmail(email);
-   }
+  @Get('email/:email')
+    async findByEmail(@Param('email') email: string) {
+      return await this.usuarioService.findByEmail(email);
+    }
 
  
 }

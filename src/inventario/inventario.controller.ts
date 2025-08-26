@@ -9,18 +9,18 @@ import { Role } from 'src/auth/roles.enum';
 import { Get } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { InventarioService } from './inventario.service';
-import { Inventario } from './entities/inventario.entity';
 import { CreateInventarioDto } from './dto/create-inventario';
 import { GlobalExceptionFilter } from 'src/filters/filter-exception';
+import { JwtAuthGuard } from 'src/auth/jwt-strategy/jwt-auth.guard';
 
 @UseFilters(GlobalExceptionFilter)
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('inventario')
 export class InventarioController {
   constructor(private readonly InventarioService: InventarioService) {}
   
 
   // Listar todos los inventarios (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Get()
   async findAll() {
@@ -29,7 +29,6 @@ export class InventarioController {
 
 
   // Crear un inventario (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Post()
   async create(@Body() dto: CreateInventarioDto) {
@@ -38,7 +37,6 @@ export class InventarioController {
 
 
   // Buscar inventario por ID (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Get(':id')
   async findById(@Param('id', ParseIntPipe) id: number) {
@@ -48,7 +46,6 @@ export class InventarioController {
   }
 
   // Eliminar inventario (solo admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number) {

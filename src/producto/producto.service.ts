@@ -13,9 +13,10 @@ export class ProductoService {
   constructor(
     @InjectRepository(Producto)
     private productoRepo: Repository<Producto>,
-
     @InjectRepository(Categoria)
     private categoriaRepo: Repository<Categoria>,
+    @InjectRepository(Inventario)
+    private invenatrioRepo: Repository<Inventario>,
 
     
 
@@ -40,12 +41,15 @@ export class ProductoService {
   }
 
   async create(dto: CreateProductoDto) {
+    const inventario = await this.invenatrioRepo.findOneBy({ id: dto.idinventario });
     const categoria = await this.categoriaRepo.findOneBy({ id: dto.idcategoria });
     if (!categoria) throw new NotFoundException('Categoría no encontrada');
+    if (!inventario) throw new NotFoundException('Inventario no encontrado');
 
     const producto = this.productoRepo.create({
       ...dto,
       categoria,
+      inventario
     });
 
     return await this.productoRepo.save(producto);
