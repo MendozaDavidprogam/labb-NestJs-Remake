@@ -21,12 +21,12 @@ import { OperacionModule } from './operacion/operacion.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123456789',
+      password: '1234',
       database: 'proyectoAPI',
-      entities: [Usuario, Producto, Categoria],
+      autoLoadEntities: true,
       synchronize: true,
     }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule, OperacionModule],
   controllers: [AppController],
-  providers: [AppService, OperacionService],
+  providers: [AppService],
 })
 export class AppModule {}

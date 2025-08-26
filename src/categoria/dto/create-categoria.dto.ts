@@ -1,7 +1,7 @@
-"/src/categoria/dto/create-categoria.dto.ts"
-import { IsString, MinLength } from 'class-validator';
+import {IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateCategoriaDto {
+  @IsNotEmpty({ message: 'El nombre no puede estar vacío' })
   @IsString()
   @MinLength(3)
   nombre: string;

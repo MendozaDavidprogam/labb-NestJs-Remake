@@ -5,6 +5,7 @@ import { Operacion } from './entities/operacion.entity';
 import { Producto } from 'src/producto/entities/producto.entity';
 import { Repository } from 'typeorm';
 
+
 @Injectable()
 export class OperacionService {
       constructor(

@@ -2,13 +2,11 @@ import { IsBoolean, IsNotEmpty, IsNumber, IsString, Min } from "class-validator"
 
 export class CreateInventarioDto{
     
-    @IsNotEmpty() 
+    @IsNotEmpty({ message: 'El nombre no puede estar vacío' })
     @IsNumber() 
     existencias: number
 
-    @IsNotEmpty() 
-    @IsNumber() 
-    idproducto: number
+
 
 
 

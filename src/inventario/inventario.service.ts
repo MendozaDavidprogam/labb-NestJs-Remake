@@ -32,8 +32,8 @@ export class InventarioService {
     }
 
     const inventario = this.inventarioRepo.create({
-        existencias: dto.existencias, 
-        producto,
+        existencias: dto.existencias,
+        productos: [producto],  
     });
 
     return await this.inventarioRepo.save(inventario);

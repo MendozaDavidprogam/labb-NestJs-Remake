@@ -82,7 +82,5 @@ export class UsuarioService {
     return rest;
   }
 
-
-
   
 }

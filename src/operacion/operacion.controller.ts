@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseFilters } from '@nestjs/common';
 import { OperacionService } from './operacion.service';
+import { GlobalExceptionFilter } from 'src/filters/filter-exception';
 
+@UseFilters(GlobalExceptionFilter)
 @Controller('operacion')
 export class OperacionController {
     constructor(private readonly operacionService: OperacionService) {}
@@ -18,8 +20,5 @@ export class OperacionController {
   async getAll() {
     return await this.operacionService.getAll();
   }
-
-
-
 
 }

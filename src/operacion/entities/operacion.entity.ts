@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDa
 import { Producto } from 'src/producto/entities/producto.entity';
 import { IsNumber } from 'class-validator';
 
-@Entity('operaciones')
+@Entity('operacion')
 export class Operacion {
   @PrimaryGeneratedColumn()
   id: number;

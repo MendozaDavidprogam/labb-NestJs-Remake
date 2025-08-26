@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Categoria } from 'src/categoria/entities/categoria.entity';
 import { Inventario } from 'src/inventario/entities/inventario.entity';
-import { Operacion } from './operacion.entity';
+import { Operacion } from 'src/operacion/entities/operacion.entity';
 
 @Entity('productos')
 export class Producto {

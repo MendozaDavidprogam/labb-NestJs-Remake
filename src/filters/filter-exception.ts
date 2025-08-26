@@ -7,30 +7,29 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-
-@Catch(NotFoundException, BadRequestException)
-export class UsuarioExceptionFilter implements ExceptionFilter {
+@Catch(HttpException)
+export class GlobalExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
 
-    let contexto = 'Error general en usuarios';
+    let mensaje: any;
 
-    if (exception instanceof BadRequestException) {
-      contexto = 'Validación exitosa de datos';
-    } else if (exception instanceof NotFoundException) {
-      contexto = 'Recurso no encontrado';
+    const res = exception.getResponse();
+    if (typeof res === 'object' && res['message']) {
+        //mensajes del dto
+      mensaje = res['message']; 
+    } else {
+      mensaje = exception.message;
     }
 
     response.status(status).json({
       statusCode: status,
-      mensaje: exception.message,
-      timestamp: new Date().toISOString(), 
+      mensaje,
+      timestamp: new Date().toISOString(),
       ruta: request.url,
-      modulo: 'usuario',
-      contexto,
     });
   }
 }

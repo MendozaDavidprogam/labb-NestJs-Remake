@@ -11,9 +11,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { InventarioService } from './inventario.service';
 import { Inventario } from './entities/inventario.entity';
 import { CreateInventarioDto } from './dto/create-inventario';
-import { UsuarioExceptionFilter } from 'src/usuario/filters/usuario-exception.filter/usuario-exception.filter';
+import { GlobalExceptionFilter } from 'src/filters/filter-exception';
 
-@UseFilters(UsuarioExceptionFilter)
+@UseFilters(GlobalExceptionFilter)
 @Controller('inventario')
 export class InventarioController {
   constructor(private readonly InventarioService: InventarioService) {}
@@ -56,7 +56,6 @@ export class InventarioController {
   }
 
 
-//método para hacer operación de entrada y salida(solo admin, put y post)
 
   
 

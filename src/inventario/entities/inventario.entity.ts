@@ -1,8 +1,9 @@
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Producto } from "src/producto/entities/producto.entity";
 
+
+@Entity('inventario')
 export class Inventario{
-    [x: string]: any;
     @PrimaryGeneratedColumn()
     id: number;
 

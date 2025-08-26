@@ -18,9 +18,9 @@ import { Role } from 'src/auth/roles.enum';
 import { UsuarioService } from './usuario.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UsuarioExceptionFilter } from './filters/usuario-exception.filter/usuario-exception.filter';
+import { GlobalExceptionFilter } from 'src/filters/filter-exception';
 
-@UseFilters(UsuarioExceptionFilter)
+@UseFilters(GlobalExceptionFilter)
 @Controller('usuario')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
@@ -31,6 +31,7 @@ export class UsuarioController {
     return await this.usuarioService.create(dto);
   }
 
+  
   // Listar todos los usuarios (solo admin)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)

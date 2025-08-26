@@ -1,11 +1,12 @@
-// src/producto/dto/create-producto.dto.ts
-import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
+import { IsString, IsNumber, IsBoolean, IsOptional, IsNotEmpty } from 'class-validator';
 
 export class CreateProductoDto {
   @IsString()
+  @IsNotEmpty({ message: 'El nombre no puede estar vacío' })
   nombre: string;
 
   @IsNumber()
+  @IsNotEmpty({ message: 'El precio no puede estar vacío' })
   precio: number;
 
   @IsBoolean()
@@ -15,5 +16,6 @@ export class CreateProductoDto {
   estado: string;
 
   @IsNumber()
+  @IsNotEmpty({ message: 'El id de la categoría no puede estar vacío' })
   idcategoria: number; 
 }
