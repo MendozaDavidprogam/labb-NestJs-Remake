@@ -1,9 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Categoria } from 'src/categoria/entities/categoria.entity';
 import { Inventario } from 'src/inventario/entities/inventario.entity';
-import { Operacion } from './operacion';
-
-
+import { Operacion } from './operacion.entity';
 
 @Entity('productos')
 export class Producto {
@@ -22,23 +20,19 @@ export class Producto {
   @Column({ default: 'activo' })
   estado: string;
 
-
   //fk con Categoria
   @ManyToOne(() => Categoria, categoria => categoria.producto, { eager: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'idcategoria' }) // clave foránea
   categoria: Categoria;
-
 
   // fk con Inventario
   @ManyToOne(() => Inventario, inventario => inventario.productos, { eager: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'idinventario' }) // clave foránea
   inventario: Inventario;
 
-
   // relación con Operación
   @OneToMany(() => Operacion, operacion => operacion.producto)
   operacion : Operacion[];
-
 
 
 }

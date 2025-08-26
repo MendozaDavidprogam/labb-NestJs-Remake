@@ -1,18 +1,24 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Producto } from './entities/producto.entity';
 import { Categoria } from '../categoria/entities/categoria.entity';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
+import { Inventario } from 'src/inventario/entities/inventario.entity';
+
 
 @Injectable()
 export class ProductoService {
   constructor(
     @InjectRepository(Producto)
     private productoRepo: Repository<Producto>,
+
     @InjectRepository(Categoria)
     private categoriaRepo: Repository<Categoria>,
+
+    
+
   ) {}
 
   async findAll(categoriaId?: number) {
@@ -62,6 +68,7 @@ export class ProductoService {
     const producto = await this.findById(id);
     return await this.productoRepo.remove(producto);
   }
+
 }
 
 

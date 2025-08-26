@@ -12,13 +12,11 @@ export class Inventario{
     @Column()
     existencias: number;
 
-    // Relacion OneToMany con Producto
+    // Relacion con Producto
     @OneToMany(() => Producto, producto => producto.inventario)
     productos: Producto[];
 
     @Column({ default: 'activo' })
     estado: string;
-
-
 
 }
