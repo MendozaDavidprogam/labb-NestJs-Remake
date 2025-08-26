@@ -4,8 +4,8 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateCategoriaDto {
   @ApiProperty({
-    description: 'Nombre único de la categoría',
-    example: 'Electrónica',
+    description: 'Nombre unico de la categoria',
+    example: 'Electronica',
     minLength: 3,
   })
   @IsString()
@@ -13,8 +13,8 @@ export class CreateCategoriaDto {
   nombre: string;
 
   @ApiProperty({
-    description: 'Descripción breve de la categoría',
-    example: 'Productos relacionados con tecnología',
+    description: 'Descripcion breve de la categoria',
+    example: 'Productos relacionados con tecnologia',
     minLength: 3,
   })
   @IsString()

@@ -23,7 +23,7 @@ export class Producto {
 
   // Relacion ManyToOne con Categoria
   @ManyToOne(() => Categoria, categoria => categoria.productos, { eager: true, onDelete: 'SET NULL' })
-  @JoinColumn({ name: 'idcategoria' }) // clave foránea
+  @JoinColumn({ name: 'idcategoria' }) // clave foranea
   categoria: Categoria;
 
 

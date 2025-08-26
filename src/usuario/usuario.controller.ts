@@ -24,7 +24,7 @@ import { UsuarioExceptionFilter } from './usuario-exception.filter/usuario-excep
 import { Usuario } from './entities/user.entity';
 
 @UseFilters(UsuarioExceptionFilter)
-@ApiTags('Usuarios') // Sección en Swagger
+@ApiTags('Usuarios')
 @Controller('usuario')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}

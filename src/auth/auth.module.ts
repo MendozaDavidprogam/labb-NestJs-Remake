@@ -8,7 +8,7 @@ import { JwtStrategy } from './jwt-strategy/jwt-strategy';
 
 @Module({
   imports: [
-    UsuarioModule, // permite inyectar UsuarioService
+    UsuarioModule,
     JwtModule.register({
       secret: 'clave_super_segura',
       signOptions: { expiresIn: '1h' },

@@ -8,10 +8,10 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Pipes globales
+  
   app.useGlobalPipes(new ValidationPipe());
 
-  // Filtros globales
+ 
   app.useGlobalFilters(new UsuarioExceptionFilter());
 
   // Swagger Configuración básica
@@ -19,7 +19,7 @@ async function bootstrap() {
     .setTitle('Inventario API')
     .setDescription('API para gestionar productos, usuarios y categorías')
     .setVersion('1.0')
-    .addBearerAuth() // Habilita JWT en Swagger UI
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

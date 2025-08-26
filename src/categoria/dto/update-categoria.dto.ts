@@ -5,14 +5,14 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateCategoriaDto extends PartialType(CreateCategoriaDto) {
   @ApiPropertyOptional({
-    description: 'Nombre único de la categoría',
+    description: 'Nombre unico de la categoria',
     example: 'Electrodomésticos',
     minLength: 3,
   })
   nombre?: string;
 
   @ApiPropertyOptional({
-    description: 'Descripción breve de la categoría',
+    description: 'Descripcion breve de la categoria',
     example: 'Productos para el hogar',
     minLength: 3,
   })
