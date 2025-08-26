@@ -1,3 +1,4 @@
+// src/categoria/categoria.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm'; //  Importa TypeOrmModule
 import { CategoriaController } from './categoria.controller';
