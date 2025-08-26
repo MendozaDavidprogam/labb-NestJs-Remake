@@ -17,7 +17,7 @@ export class Inventario{
     @OneToMany(() => Producto, producto => producto.inventario)
     productos: Producto[];
 
-    @Column({ default: 'activo' })
+    @Column()
     estado: string;
 
 }

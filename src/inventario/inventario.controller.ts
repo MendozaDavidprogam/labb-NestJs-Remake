@@ -28,7 +28,7 @@ export class InventarioController {
   }
 
 
-  // Crear un usuario (solo admin)
+  // Crear un inventario (solo admin)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   @Post()
