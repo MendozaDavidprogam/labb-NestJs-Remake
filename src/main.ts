@@ -14,7 +14,7 @@ async function bootstrap() {
  
   app.useGlobalFilters(new UsuarioExceptionFilter());
 
-  // Swagger Configuración básica
+
   const config = new DocumentBuilder()
     .setTitle('Inventario API')
     .setDescription('API para gestionar productos, usuarios y categorías')
