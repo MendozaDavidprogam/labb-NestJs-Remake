@@ -3,7 +3,7 @@ import { IsBoolean, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Min } from
 export class CreateInventarioDto{
     
     @IsNotEmpty({ message: 'El nombre no puede estar vacío' })
-    @IsNumber() 
+    @IsString() 
     nombre: string
 
     @IsNotEmpty({ message: 'Existencias no puede estar vacío' })

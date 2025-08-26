@@ -21,7 +21,7 @@ export class InventarioService {
   }
 
   // Crear inventario sin asignar producto
-  async crearInventario(dto: { nombre: string; existencias: number, estado: string}) {
+  async crearInventario(dto: { nombre: string; existencias: number, estado?: string}) {
     const inventario = this.inventarioRepo.create({
       nombre: dto.nombre,
       existencias: dto.existencias,
