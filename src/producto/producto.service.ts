@@ -16,7 +16,7 @@ export class ProductoService {
     @InjectRepository(Categoria)
     private categoriaRepo: Repository<Categoria>,
     @InjectRepository(Inventario)
-    private invenatrioRepo: Repository<Inventario>,
+    private inventarioRepo: Repository<Inventario>,
 
     
 
@@ -40,16 +40,21 @@ export class ProductoService {
     return producto;
   }
 
+
   async create(dto: CreateProductoDto) {
-    const inventario = await this.invenatrioRepo.findOneBy({ id: dto.idinventario });
+    const inventario = await this.inventarioRepo.findOneBy({ id: dto.idinventario });
     const categoria = await this.categoriaRepo.findOneBy({ id: dto.idcategoria });
+
     if (!categoria) throw new NotFoundException('Categoría no encontrada');
     if (!inventario) throw new NotFoundException('Inventario no encontrado');
 
     const producto = this.productoRepo.create({
-      ...dto,
+      nombre: dto.nombre,
+      precio: dto.precio,
+      disponibilidad: dto.disponibilidad,
+      estado: dto.estado,
       categoria,
-      inventario
+      inventario,
     });
 
     return await this.productoRepo.save(producto);
