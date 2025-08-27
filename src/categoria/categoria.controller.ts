@@ -10,6 +10,7 @@ import {
   Delete,
   UseGuards,
   ParseIntPipe,
+  UseFilters,
 } from '@nestjs/common';
 import { CategoriaService } from './categoria.service';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
@@ -18,6 +19,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-strategy/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/roles.decorator';
 import { Role } from 'src/auth/roles.enum';
+import { GlobalExceptionFilter } from 'src/filters/filter-exception';
 
 // Swagger
 import {
@@ -30,8 +32,9 @@ import {
 
 @ApiTags('categorias')
 @ApiBearerAuth()
-@Controller('categoria')
 @UseGuards(JwtAuthGuard, RolesGuard)
+@UseFilters(GlobalExceptionFilter)
+@Controller('categoria')
 export class CategoriaController {
   constructor(private readonly categoriaService: CategoriaService) {}
 
