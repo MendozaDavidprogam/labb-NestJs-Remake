@@ -30,7 +30,7 @@ import { Categoria } from './entities/categoria.entity';
 @ApiTags('categorias')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
-@UseFilters(CategoriaExceptionFilter) // <- Aplica el filtro aquí
+@UseFilters(CategoriaExceptionFilter) 
 @Controller('categoria')
 export class CategoriaController {
   constructor(private readonly categoriaService: CategoriaService) {}

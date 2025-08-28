@@ -12,6 +12,8 @@ import { AuthModule } from './auth/auth.module';
 import { Usuario } from './usuario/entities/user.entity';
 import { Producto } from './producto/entities/producto.entity';
 import { Categoria } from './categoria/entities/categoria.entity';
+import { OperacionService } from './operacion/operacion.service';
+import { OperacionModule } from './operacion/operacion.module';
 
 @Module({ imports: [
     TypeOrmModule.forRoot({
@@ -21,9 +23,9 @@ import { Categoria } from './categoria/entities/categoria.entity';
       username: 'postgres',
       password: 'Yoelin26',
       database: 'proyectoAPI',
-      entities: [Usuario, Producto, Categoria],
+      autoLoadEntities: true,
       synchronize: true,
-    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule],
+    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule, OperacionModule],
   controllers: [AppController],
   providers: [AppService],
 })

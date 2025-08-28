@@ -1,11 +1,12 @@
-// src/producto/producto.service.ts
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Producto } from './entities/producto.entity';
 import { Categoria } from '../categoria/entities/categoria.entity';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
+import { Inventario } from 'src/inventario/entities/inventario.entity';
+
 
 @Injectable()
 export class ProductoService {
@@ -14,6 +15,11 @@ export class ProductoService {
     private productoRepo: Repository<Producto>,
     @InjectRepository(Categoria)
     private categoriaRepo: Repository<Categoria>,
+    @InjectRepository(Inventario)
+    private inventarioRepo: Repository<Inventario>,
+
+    
+
   ) {}
 
   async findAll(categoriaId?: number) {
@@ -27,19 +33,28 @@ export class ProductoService {
 
   async findById(id: number) {
     const producto = await this.productoRepo.findOne({
-      where: { idproducto: id },
+      where: { id: id },
     });
+
     if (!producto) throw new NotFoundException('Producto no encontrado');
     return producto;
   }
 
+
   async create(dto: CreateProductoDto) {
+    const inventario = await this.inventarioRepo.findOneBy({ id: dto.idinventario });
     const categoria = await this.categoriaRepo.findOneBy({ id: dto.idcategoria });
+
     if (!categoria) throw new NotFoundException('Categoría no encontrada');
+    if (!inventario) throw new NotFoundException('Inventario no encontrado');
 
     const producto = this.productoRepo.create({
-      ...dto,
+      nombre: dto.nombre,
+      precio: dto.precio,
+      disponibilidad: dto.disponibilidad,
+      estado: dto.estado,
       categoria,
+      inventario,
     });
 
     return await this.productoRepo.save(producto);
@@ -62,4 +77,5 @@ export class ProductoService {
     const producto = await this.findById(id);
     return await this.productoRepo.remove(producto);
   }
+
 }

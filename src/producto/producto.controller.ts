@@ -10,6 +10,7 @@ import {
   ParseIntPipe,
   Query,
   UseGuards,
+  UseFilters,
 } from '@nestjs/common';
 import { ProductoService } from './producto.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
@@ -18,7 +19,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/roles.decorator';
 import { Role } from 'src/auth/roles.enum';
+import { GlobalExceptionFilter } from 'src/filter/filter-exception';
 
+@UseFilters(GlobalExceptionFilter)
 @Controller('producto')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 export class ProductoController {
