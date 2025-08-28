@@ -25,6 +25,29 @@ export class OperacionController {
   // Listar todas las operaciones (solo admin)
   @Roles(Role.Admin)
   @Get()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   async getAll() {
     return await this.operacionService.getAll();
   }
