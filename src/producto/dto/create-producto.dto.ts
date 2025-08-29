@@ -1,4 +1,3 @@
-// src/producto/dto/create-producto.dto.ts
 import { IsString, IsNumber, IsBoolean, IsNotEmpty, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 

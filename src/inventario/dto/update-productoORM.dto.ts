@@ -1,4 +1,3 @@
-// src/inventario/dto/update-inventario.dto.ts
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateInventarioDto } from './create-inventario';
 import { ApiPropertyOptional } from '@nestjs/swagger';

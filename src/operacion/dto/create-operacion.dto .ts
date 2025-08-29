@@ -1,4 +1,3 @@
-// src/operacion/dto/create-operacion.dto.ts
 import { IsString, IsNumber, IsPositive, IsNotEmpty, IsIn } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 

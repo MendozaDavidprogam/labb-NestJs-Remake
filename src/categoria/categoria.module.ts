@@ -1,4 +1,3 @@
-// src/categoria/categoria.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriaController } from './categoria.controller';

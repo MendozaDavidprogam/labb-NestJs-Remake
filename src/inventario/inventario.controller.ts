@@ -1,4 +1,3 @@
-// src/inventario/inventario.controller.ts
 import {
   Controller,
   Get,

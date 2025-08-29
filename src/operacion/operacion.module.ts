@@ -1,4 +1,3 @@
-// src/operacion/operacion.module.ts
 import { Module } from '@nestjs/common';
 import { OperacionController } from './operacion.controller';
 import { OperacionService } from './operacion.service';

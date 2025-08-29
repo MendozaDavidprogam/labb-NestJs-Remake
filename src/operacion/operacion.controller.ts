@@ -1,4 +1,3 @@
-// src/operacion/operacion.controller.ts
 import { Body, Controller, Get, Post, UseFilters, UseGuards } from '@nestjs/common';
 import { OperacionService } from './operacion.service';
 import { GlobalExceptionFilter } from 'src/filters/filter-exception';

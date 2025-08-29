@@ -1,4 +1,3 @@
-// src/categoria/categoria.controller.ts
 import {
   Controller,
   Get,

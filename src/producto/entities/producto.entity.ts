@@ -1,4 +1,3 @@
-// src/producto/entities/producto.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Categoria } from 'src/categoria/entities/categoria.entity';
 import { Inventario } from 'src/inventario/entities/inventario.entity';

@@ -1,4 +1,3 @@
-// src/producto/dto/update-producto.dto.ts
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateProductoDto } from './create-producto.dto';
 import { ApiPropertyOptional } from '@nestjs/swagger';

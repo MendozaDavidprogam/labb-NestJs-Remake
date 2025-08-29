@@ -1,4 +1,3 @@
-// src/filters/filter-exeption.ts
 import {
   ExceptionFilter,
   Catch,

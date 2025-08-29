@@ -1,4 +1,3 @@
-// src/inventario/dto/create-inventario.dto.ts
 import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 

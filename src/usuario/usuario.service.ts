@@ -1,4 +1,3 @@
-// src/usuario/usuario.service.ts
 import {
   Injectable,
   NotFoundException,

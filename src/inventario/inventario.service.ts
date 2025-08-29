@@ -1,4 +1,3 @@
-// src/inventario/inventario.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Inventario } from './entities/inventario.entity';
 import { Repository } from 'typeorm';
