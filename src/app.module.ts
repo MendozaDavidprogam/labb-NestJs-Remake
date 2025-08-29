@@ -8,7 +8,12 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { InventarioModule } from './inventario/inventario.module';
 import { RolesModule } from './roles/roles.module';
 import { AuthModule } from './auth/auth.module';
-
+import { Usuario } from './usuario/entities/user.entity';
+import { Producto } from './producto/entities/producto.entity';
+import { Categoria } from './categoria/entities/categoria.entity';
+import { Inventario } from './inventario/entities/inventario.entity';
+import { Operacion } from './operacion/entities/operacion.entity';
+import { OperacionModule } from './operacion/operacion.module';
 
 @Module({ imports: [
     TypeOrmModule.forRoot({
@@ -18,9 +23,9 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: '123456789',
       database: 'proyectoAPI',
-      entities: [],
+      entities: [Usuario, Producto, Categoria, Inventario, Operacion],
       synchronize: true,
-    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, AuthModule, RolesModule],
+    }),UsuarioModule, ProductoModule, CategoriaModule, InventarioModule, RolesModule, AuthModule, OperacionModule],
   controllers: [AppController],
   providers: [AppService],
 })
